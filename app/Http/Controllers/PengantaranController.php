@@ -11,7 +11,7 @@ class PengantaranController extends Controller
      */
     public function index()
     {
-        $data ['pengantaran']= \App/Models\pengantaran:: orderBy('id','desc')->paginate(10)
+        $data ['pengantaran']= \App/Models\pengantaran:: orderBy('id','desc')->paginate(10);
         $data ['judul']='Data-Data pengantaran';
         return view ('pengantaran_index',$data);
     }
