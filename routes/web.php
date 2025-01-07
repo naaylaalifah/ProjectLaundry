@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\BarangController;
+
+use App\Http\Controllers\PelangganController;
+
+use App\Http\Controllers\PengirimanController;
+
+use App\Http\Controllers\TransaksiController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +28,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->group(function () {
+
+    Route::resource('barang', BarangController::class);
+
+    Route::resource('pelanggan', PelangganController::class);
+        
+    Route::resource('transaksi', TransaksiController::class);
+        
+    Route::get('barang/laporan/cetak',[BarangController::class, 'laporan']);
+        
+    Route::get('pelanggan/laporan/cetak',[PelangganController::class, 'laporan']);
+        
+    Route::get('transaksi/laporan/cetak',[TransaksiController::class, 'laporan']);
+        
+    });

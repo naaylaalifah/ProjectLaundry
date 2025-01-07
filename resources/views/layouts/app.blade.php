@@ -30,7 +30,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data Laundry</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ url('pelanggan',[]) }}">Data Pelanggan</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pelanggan/create',[]) }}">Tambah Pelanggan</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{ url('barang',[]) }}">Data Barang</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('barang/create',[]) }}">Tambah Barang</a></li>
+                                </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Data Administrasi</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ url('transaksi',[]) }}">Data Transaksi</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('transaksi/create',[]) }}">Tambah Transaksi</a></li>
+                                </ul>
+                        </li>  
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Laporan Laundry</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ url('barang/laporan/cetak',[]) }}">Laporan Barang</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('pelanggan/laporan/cetak',[]) }}">Laporan Pelanggan</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('transaksi/laporan/cetak',[]) }}">Laporan Transaksi</a></li>
+                                </ul>
+                        </li>
+                        
+                    @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
