@@ -11,7 +11,9 @@ class PengantaranController extends Controller
      */
     public function index()
     {
-        //
+        $pelangggan =\App\Models\Pelanggan::findOrFail($id);
+        $pelangggan->delete();
+        return back()->with('pesan','Data Sudah Dihapus');
     }
 
     /**
@@ -43,7 +45,7 @@ class PengantaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pengantaran_edit',array('id' => $id));
     }
 
     /**
@@ -51,7 +53,15 @@ class PengantaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'status_pengantaran' => 'required'
+        ]);
+
+        $pengantaran = \App\Models\Pengantaran::findOrFail($id);
+        $pengantaran->status_pengantaran = $request->status_pengantaran;
+        $pengantaran->save();
+
+        return redirect('/pengantaran')->with('pesan', 'Data sudah Diperbarui');
     }
 
     /**
@@ -59,6 +69,8 @@ class PengantaranController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pengantaran = \App\Models\Pengantaran::findOrFail($id);
+        $pengantaran->delete();
+        return back()->with('pesan','Data Sudah Dihapus');
     }
 }

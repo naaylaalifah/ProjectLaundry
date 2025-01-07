@@ -11,9 +11,10 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $data['barang'] = \App\Models\Barang::orderBy('id', 'desc')->paginate(10);
+        $data['barang'] = \App\Models\Barang::orderBy('id','desc')->paginate(10);
         $data['judul'] = 'Data-Data Barang';
-        return view('barang_index', $data);
+        return view('barang_index',$data);
+
     }
 
     /**
@@ -21,6 +22,7 @@ class BarangController extends Controller
      */
     public function create()
     {
+
         $data['list_laundry'] = ['Cuci Kering Reguler', 'Cuci Kering Express', 'Setrika Reguler', 'Setrika Express', 'Komplit Reguler', 'Komplit Express'];
         $data['list_satuan'] = ['KG', 'Satuan'];
 
@@ -38,6 +40,7 @@ class BarangController extends Controller
             'satuan_barang' => 'required',
             'jenis_laundry' => 'required',
             'berat' => 'required'
+
         ]);
 
         $barang = new \App\Models\Barang();
@@ -48,6 +51,7 @@ class BarangController extends Controller
         $barang->berat = $request->berat;
         $barang->save();
         return back()->with('pesan', 'Data sudah Disimpan');
+
     }
 
     /**
@@ -64,8 +68,10 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $data['barang'] = \App\Models\Barang::findOrFail($id);
+
         $data['list_laundry'] = ['Cuci Kering Reguler', 'Cuci Kering Express', 'Setrika Reguler', 'Setrika Express', 'Komplit Reguler', 'Komplit Express', 'Barang Lain'];
         $data['list_satuan'] = ['KG', 'Satuan'];
+
         return view('barang_edit', $data);
     }
 
@@ -75,6 +81,7 @@ class BarangController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+
             'kode_barang' => 'required|unique:barangs,kode_barang' . $id,
             'nama_barang' => 'required',
             'satuan_barang' => 'required',
@@ -97,6 +104,7 @@ class BarangController extends Controller
      */
     public function destroy(string $id)
     {
+
         $barang = \App\Models\Barang::findOrFail($id);
         $barang->delete();
         return back()->with('pesan', 'Data Sudah Dihapus');

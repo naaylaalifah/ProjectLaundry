@@ -11,7 +11,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+      
     }
 
     /**
@@ -19,7 +19,7 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -27,7 +27,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -43,7 +43,7 @@ class TransaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       
     }
 
     /**
@@ -51,7 +51,8 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+
     }
 
     /**
@@ -59,6 +60,6 @@ class TransaksiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
     }
 }
