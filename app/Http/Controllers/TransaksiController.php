@@ -138,6 +138,21 @@ class TransaksiController extends Controller
     {
         $transaksi = \App\Models\Transaksi::findOrFail($id);
         $transaksi->delete();
+
+        $pengantaran = \App\Models\Pengantaran::where("transaksi_id", $id);
+        
+        if ($pengantaran) 
+        {
+            $pengantaran->delete();
+        }
+
         return back()->with('pesan','Data Sudah Dihapus');
+    }
+
+    public function laporan()
+    {
+        $data['transaksi'] = \App\Models\Transaksi::all();
+        $data['judul'] = 'Laporan Data Transaksi';
+        return view('Transaksi_laporan', $data);
     }
 }

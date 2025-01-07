@@ -60,7 +60,7 @@ class PelangganController extends Controller
     public function edit(string $id)
     {
 
-        $data['pelanggan'] = \App\Models\Barang: :findOrFail ($id);
+        $data['pelanggan'] = \App\Models\Barang::findOrFail ($id);
         return view ('pelanggan_edit', $data);
     }
 

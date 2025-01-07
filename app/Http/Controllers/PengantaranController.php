@@ -69,10 +69,10 @@ class PengantaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function laporan()
     {
-        $pengantaran = \App\Models\Pengantaran::findOrFail($id);
-        $pengantaran->delete();
-        return back()->with('pesan','Data Sudah Dihapus');
+        $data['pengantaran'] = \App\Models\Pengantaran::all();
+        $data['judul'] = 'Laporan Data Pengantaran';
+        return view('pengantaran_laporan', $data);
     }
 }
