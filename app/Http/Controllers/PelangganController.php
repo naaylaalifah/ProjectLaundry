@@ -11,6 +11,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
+
         $data['pelanggan'] = \App\Models\Pelanggan::orderBy('id','desc')->paginate(10);
         $data['judul'] = 'Data-Data Pelanggan';
         return view('pelanggan_index',$data);
@@ -58,8 +59,9 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        $data['pelanggan'] = \App\Models\Barang::findOrFail($id);
-        return view('pelanggan_edit', $data);
+
+        $data['pelanggan'] = \App\Models\Barang: :findOrFail ($id);
+        return view ('pelanggan_edit', $data);
     }
 
     /**
@@ -91,6 +93,14 @@ class PelangganController extends Controller
         $pelangggan =\App\Models\Pelanggan::findOrFail($id);
         $pelangggan->delete();
         return back()->with('pesan','Data Sudah Dihapus');
+
+    }
+
+    public function laporan()
+    {
+    $data['pelanggan'] = \App\Models\Pelanggan::all();
+    $data['judul'] = 'Laporan Data Pelanggan';
+    return view('pelanggan_laporan', $data);
     }
 
 }
