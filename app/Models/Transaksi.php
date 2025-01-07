@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
+
+    public function Barang(): BelongsTo
+    {
+        return $this->belongsTo('\App\Models\Barang')->withDefault();
+    }
+    public function Pelanggan(): BelongsTo
+    {
+        return $this->belongsTo('\App\Models\Pelanggan')->withDefault();
+    }
 }
