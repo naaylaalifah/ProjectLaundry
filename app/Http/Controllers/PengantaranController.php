@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 class PengantaranController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *  Display a listing of the resource
      */
     public function index()
     {
-        $pelangggan =\App\Models\Pelanggan::findOrFail($id);
-        $pelangggan->delete();
-        return back()->with('pesan','Data Sudah Dihapus');
+        $data ['pengantaran']= \App/Models\pengantaran:: orderBy('id','desc')->paginate(10)
+        $data ['judul']='Data-Data pengantaran';
+        return view ('pengantaran_index',$data);
     }
 
     /**
@@ -29,7 +29,7 @@ class PengantaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -46,6 +46,7 @@ class PengantaranController extends Controller
     public function edit(string $id)
     {
         return view('pengantaran_edit',array('id' => $id));
+
     }
 
     /**
@@ -54,10 +55,11 @@ class PengantaranController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'status_pengantaran' => 'required'
+            'status_pengantaran'=> 'required'
         ]);
 
-        $pengantaran = \App\Models\Pengantaran::findOrFail($id);
+        $pengantaran = \App\Models\Pengantaran::findorFail($id);
+
         $pengantaran->status_pengantaran = $request->status_pengantaran;
         $pengantaran->save();
 
