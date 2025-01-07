@@ -100,6 +100,15 @@
         </nav>
 
         <main class="py-4">
+            
+            @if (Session::has('pesan'))
+                <div class="alert alert-primary" role="alert">
+                    {{
+                        Session::get('pesan')
+                    }}
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
