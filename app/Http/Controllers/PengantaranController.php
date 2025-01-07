@@ -45,7 +45,8 @@ class PengantaranController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pengantaran_edit',array('id'=> $id));
+        return view('pengantaran_edit',array('id' => $id));
+
     }
 
     /**
@@ -58,6 +59,7 @@ class PengantaranController extends Controller
         ]);
 
         $pengantaran = \App\Models\Pengantaran::findorFail($id);
+
         $pengantaran->status_pengantaran = $request->status_pengantaran;
         $pengantaran->save();
 
