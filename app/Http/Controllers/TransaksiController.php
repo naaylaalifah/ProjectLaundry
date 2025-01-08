@@ -155,4 +155,13 @@ class TransaksiController extends Controller
         $data['judul'] = 'Laporan Data Transaksi';
         return view('Transaksi_laporan', $data);
     }
+
+    public function cari (Request $request)
+    {
+        $cari = $request->get('search');
+        $data ['transaksi'] = \App\Models\Transaksi::where('nama_pelanggan','like','%'.$cari.'%')->paginate(5);
+        $data ['judul'] = 'Data-data Transaksi';
+        
+        return view('Transaksi_index', $data);
+    }
 }

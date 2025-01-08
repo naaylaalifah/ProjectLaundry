@@ -42,5 +42,19 @@ Route::middleware('auth')->group(function () {
     Route::get('pelanggan/laporan/cetak',[PelangganController::class, 'laporan']);
         
     Route::get('transaksi/laporan/cetak',[TransaksiController::class, 'laporan']);
+    
+    Route::get('pengantaran/laporan/cetak',[TransaksiController::class, 'laporan']);
+
+    Route::get('barang/cari/data',[BarangController::class, 'cari']);
+        
+    Route::get('pelanggan/cari/data',[PelangganController::class, 'cari']);
+        
+    Route::get('transaksi/cari/data',[TransaksiController::class, 'cari']);
+
+    Route::get('pengantaran/cari/data',[TransaksiController::class, 'cari']);
         
     });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

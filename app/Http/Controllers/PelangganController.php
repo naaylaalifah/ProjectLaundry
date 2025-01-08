@@ -103,4 +103,13 @@ class PelangganController extends Controller
     return view('pelanggan_laporan', $data);
     }
 
+    public function cari (Request $request)
+    {
+        $cari = $request->get('search');
+        $data ['pelanggan'] = \App\Models\Pelanggan::where('nama_pelanggan','like','%'.$cari.'%')->paginate(5);
+        $data ['judul'] = 'Data-data Pelanggan';
+        
+        return view('pelanggan_index', $data);
+    }
+
 }
