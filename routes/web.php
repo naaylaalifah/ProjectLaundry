@@ -6,7 +6,7 @@ use App\Http\Controllers\BarangController;
 
 use App\Http\Controllers\PelangganController;
 
-use App\Http\Controllers\PengirimanController;
+use App\Http\Controllers\PengantaranController;
 
 use App\Http\Controllers\TransaksiController;
 
@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('pelanggan', PelangganController::class);
         
     Route::resource('transaksi', TransaksiController::class);
+
+    Route::resource('pengantaran', PengantaranController::class);    
         
     Route::get('barang/laporan/cetak',[BarangController::class, 'laporan']);
         
@@ -43,7 +45,7 @@ Route::middleware('auth')->group(function () {
         
     Route::get('transaksi/laporan/cetak',[TransaksiController::class, 'laporan']);
     
-    Route::get('pengantaran/laporan/cetak',[TransaksiController::class, 'laporan']);
+    Route::get('pengantaran/laporan/cetak',[PengantaranController::class, 'laporan']);
 
     Route::get('barang/cari/data',[BarangController::class, 'cari']);
         
@@ -51,10 +53,6 @@ Route::middleware('auth')->group(function () {
         
     Route::get('transaksi/cari/data',[TransaksiController::class, 'cari']);
 
-    Route::get('pengantaran/cari/data',[TransaksiController::class, 'cari']);
+    Route::get('pengantaran/cari/data',[PengantaranController::class, 'cari']);
         
     });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

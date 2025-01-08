@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('satuan_barang');            
             $table->string('jenis_laundry');
             $table->integer('berat');
+            $table->timestamps();
         });
     }
 

@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dokter as $a)
+                        @foreach ($transaksi as $a)
                             <tr>
                                 <td>{{ $a->id }}</td>
                                 <td>{{ $a->pelanggan->nama_pelanggan }}</td>

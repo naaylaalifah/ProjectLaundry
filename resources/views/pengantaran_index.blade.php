@@ -32,13 +32,6 @@
                                         <td>
                                             <a href="{{ url('pengantaran/' . $a->id . '/edit', []) }}"
                                                 class="btn btn-primary btn-sm">Edit</a>
-
-                                            <form action="{{ url('pengantaran/' . $a->id, []) }}" method="post"
-                                                class="d-inline" onsubmit="return confirm('Apakah Dihapus?')">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
                                         </td>
 
                                     </tr>
