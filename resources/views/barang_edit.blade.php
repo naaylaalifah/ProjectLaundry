@@ -8,8 +8,7 @@
                         Perbarui Data Barang
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('barang/' . $barang->id, []) }}" method="POST">
-
+                        <form action="{{ url('barang/'. $barang->id, []) }}" method="POST">
                             @method('PUT')
                             @csrf
                             <div class="form-group">
@@ -32,6 +31,7 @@
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
                                 <div class="form-group">
                                     <label for="jenis_laundry">Jenis Laundry</label>
                                     <select id="jenis_laundry" class="form-control" name="jenis_laundry">
@@ -45,9 +45,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="berat">Berat</label>
-                                    <input id="berat" class="form-control" type="text" name="nama_barang"
+                                    <input id="berat" class="form-control" type="text" name="berat"
                                         value="{{ $barang->berat ?? old('berat') }}">
-                                    <span class="text-danger">{{ $errors->first('barang') }}</span>
+                                    <span class="text-danger">{{ $errors->first('berat') }}</span>
                                 </div>
                             </div>
                             <div class="card-footer">

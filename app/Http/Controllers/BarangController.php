@@ -69,7 +69,7 @@ class BarangController extends Controller
     {
         $data['barang'] = \App\Models\Barang::findOrFail($id);
 
-        $data['list_laundry'] = ['Cuci Kering Reguler', 'Cuci Kering Express', 'Setrika Reguler', 'Setrika Express', 'Komplit Reguler', 'Komplit Express', 'Barang Lain'];
+        $data['list_laundry'] = ['Cuci Kering Reguler', 'Cuci Kering Express', 'Setrika Reguler', 'Setrika Express', 'Komplit Reguler', 'Komplit Express'];
         $data['list_satuan'] = ['KG', 'Satuan'];
 
         return view('barang_edit', $data);
@@ -82,7 +82,7 @@ class BarangController extends Controller
     {
         $request->validate([
 
-            'kode_barang' => 'required|unique:barangs,kode_barang' . $id,
+            'kode_barang' => 'required|unique:barangs,kode_barang,'.$id,
             'nama_barang' => 'required',
             'satuan_barang' => 'required',
             'jenis_laundry' => 'required',
@@ -96,6 +96,7 @@ class BarangController extends Controller
         $barang->jenis_laundry = $request->jenis_laundry;
         $barang->berat = $request->berat;
         $barang->save();
+        
         return redirect('/barang')->with('pesan', 'Data sudah Diperbarui');
     }
 

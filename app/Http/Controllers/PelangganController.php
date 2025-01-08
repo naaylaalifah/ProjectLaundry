@@ -60,7 +60,7 @@ class PelangganController extends Controller
     public function edit(string $id)
     {
 
-        $data['pelanggan'] = \App\Models\Barang::findOrFail ($id);
+        $data['pelanggan'] = \App\Models\Pelanggan::findOrFail ($id);
         return view ('pelanggan_edit', $data);
     }
 
@@ -70,7 +70,7 @@ class PelangganController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'kode_pelanggan' => 'required|unique:pelanggans,kode_pelanggan'.$id,
+            'kode_pelanggan' => 'required|unique:pelanggans,kode_pelanggan,'.$id,
             'nama_pelanggan' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required'
@@ -82,6 +82,7 @@ class PelangganController extends Controller
             $pelangggan->alamat = $request->alamat;
             $pelangggan->no_hp = $request->no_hp;
             $pelangggan->save();
+            
             return redirect('/pelanggan')->with('pesan', 'Data sudah Diperbarui');
     }
 
